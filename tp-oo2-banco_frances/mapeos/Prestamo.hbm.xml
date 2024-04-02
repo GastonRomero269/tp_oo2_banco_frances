@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="datos.Prestamo" table="prestamo">
+		<id name="idPrestamo" column="idPrestamo">
+			<generator class="identity"></generator>
+		</id>
+		<property name="fecha" column="fecha" type="LocalDate"></property>
+		<property name="monto" column="monto" type="double"></property>
+		<property name="intereses" column="intereses" type="double"></property>
+		<property name="cantCuotas" column="cantCuotas" type="int"></property>
+		<property name="cancelado" column="cancelado" type="boolean"></property>
+		<many-to-one name="cliente" column="idCliente" class="datos.Cliente"></many-to-one>
+		<set name="cuotas" table="cuota">
+			<key column="idPrestamo"></key>
+			<one-to-many class="datos.Cuota"/>
+		</set>
+	</class>
+</hibernate-mapping>
