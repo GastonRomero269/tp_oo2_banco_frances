@@ -11,7 +11,7 @@
 		<property name="cantCuotas" column="cantCuotas" type="int"></property>
 		<property name="cancelado" column="cancelado" type="boolean"></property>
 		<many-to-one name="cliente" column="idCliente" class="datos.Cliente"></many-to-one>
-		<set name="cuotas" table="cuota">
+		<set name="cuotas" table="cuota" cascade="save-update" lazy="true" order-by="idCuota asc" inverse="true" fetch="select">
 			<key column="idPrestamo"></key>
 			<one-to-many class="datos.Cuota"/>
 		</set>
