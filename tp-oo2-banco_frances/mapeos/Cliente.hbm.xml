@@ -10,7 +10,7 @@
 		<property name="dni" column="dni" type="long"></property>
 		<property name="fechaDeNacimiento" column="fechaDeNacimiento" type="LocalDate"></property>
 		<property name="baja" column="baja" type="boolean"></property>
-		<set name="prestamos" table="prestamo" lazy="true" order-by="idPrestamo asc" inverse="true" fetch="select">
+		<set name="prestamos" table="prestamo" cascade="save-update" lazy="true" order-by="idPrestamo asc" inverse="true" fetch="select">
 			<key column="idCliente"></key>
 			<one-to-many class="datos.Prestamo"/>
 		</set>
